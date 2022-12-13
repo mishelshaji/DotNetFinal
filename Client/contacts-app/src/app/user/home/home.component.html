@@ -1,0 +1,30 @@
+<div class="container">
+    <h1 class="text-center text-primary">
+        User Dashboard
+    </h1>
+    <div class="row">
+        <div class="col-sm-6">
+            <h2>Contacts</h2>
+            <table *ngIf="contacts != null">
+                <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                </tr>
+                <tr *ngFor="let contact of contacts">
+                    <td>{{ contact.firstName }} {{ contact.lastName}}</td>
+                    <td>56454</td>
+                    <td>me@example.com</td>
+                </tr>
+            </table>
+
+            <div class="alert alert-info" *ngIf="!contacts">
+                No contacts found.
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <user-contact></user-contact>
+        </div>
+    </div>
+</div>

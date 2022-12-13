@@ -1,0 +1,48 @@
+<h2>Manage Contact</h2>
+
+<form #form="ngForm" (ngSubmit)="saveContact">
+    <div>
+        <label for="firstName">First Name</label>
+        <input ngModel #firstName="ngModel" type="text" id="firstName" name="firstName"  class="form-control" minlength="2" maxlength="15" required/>
+        <div class="text-danger" *ngIf="firstName.errors && firstName.touched">
+            <div *ngIf="firstName.errors?.['required']">First Name is required</div>
+            <div *ngIf="firstName.errors?.['minlength']">First Name must be at least 2 characters</div>
+            <div *ngIf="firstName.errors?.['maxlength']">First Name cannot be more than 15 characters</div>
+        </div>
+    </div>
+    <div>
+        <label for="lastName">Last Name</label>
+        <input type="text" ngModel #lastName="ngModel" id="lastName" name="lastName"  class="form-control" minlength="2" maxlength="15" required/>
+        <div class="text-danger" *ngIf="lastName.errors && lastName.touched">
+            <div *ngIf="lastName.errors?.['required']">Last Name is required</div>
+            <div *ngIf="lastName.errors?.['minlength']">Last Name must be at least 2 characters</div>
+            <div *ngIf="lastName.errors?.['maxlength']">Last Name cannot be more than 15 characters</div>
+        </div>
+    </div>
+    <div>
+        <label for="email">Email</label>
+        <input type="email" ngModel #email="ngModel" id="email" name="email"  class="form-control"/>
+        <div class="text-danger" *ngIf="email.errors && email.touched">
+            <div *ngIf="email.errors?.['email']">Email is invalid</div>
+        </div>
+    </div>
+    <div>
+        <label for="phone">Phone</label>
+        <input type="text" ngModel #phone="ngModel" id="phone" name="phone"  class="form-control" required minlength="10" maxlength="10"/>
+        <div class="text-danger" *ngIf="phone.errors && phone.touched">
+            <div *ngIf="phone.errors?.['required']">Phone is required</div>
+            <div *ngIf="phone.errors?.['minlength']">Phone must be 10 digits</div>
+            <div *ngIf="phone.errors?.['maxlength']">Phone must be 10 digits</div>
+        </div>
+    </div>
+    <div>
+        <label for="address">Address</label>
+        <textarea type="text" ngModel #address="ngModel" id="address" name="address"  class="form-control" maxlength="250"></textarea>
+        <div class="text-danger" *ngIf="address.errors && address.touched">
+            <div *ngIf="address.errors?.['maxlength']">Address cannot be more than 250 characters</div>
+        </div>
+    </div>
+    <div class="d-grid mt-2">
+        <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Save</button>
+    </div>
+</form>
